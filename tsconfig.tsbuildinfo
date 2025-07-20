@@ -1,1 +1,1 @@
-{"root":["./src/index.ts"],"version":"5.8.3"}
+{"root":["./src/index.ts","./src/controllers/compute.controller.ts","./src/data/skills.data.ts","./src/handlers/jdScore.handler.ts","./src/handlers/lineExtractor.helper.ts","./src/routes/compute.route.ts","./src/utils/flexsearch.utils.ts","./src/utils/fuse.utils.ts"],"version":"5.8.3"}
