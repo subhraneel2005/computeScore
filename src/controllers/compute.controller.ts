@@ -21,10 +21,10 @@ const computeController = async (req: Request, res: Response) => {
 
     const { JDcount, skills } = calculateJDScore(jobDetails);
 
-    res.status(200).json({ JDcount, skills });
+    return res.status(200).json({ JDcount, skills });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Internal server error" });
   }
 };
 

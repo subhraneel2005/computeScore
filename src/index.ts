@@ -1,18 +1,30 @@
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 import { JdScore } from "./routes/compute.route";
-
-dotenv.config();
+import { PORT } from "./utils/envs.util";
+import { Auth } from "./routes/auth.route";
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "chrome://extensions/?id=jeachbghkgofbkhecheplngonefdolag",
+      "chrome-extension://jeachbghkgofbkhecheplngonefdolag",
+      "https://www.linkedin.com",
+    ],
+    credentials: true,
+  })
+);
+app.use(cookieParser());
+app.use(express.json());
 
 app.use(express.json());
 
 app.use("/api/v1", JdScore);
+app.use("/api/v1", Auth);
 
-app.listen(process.env.PORT || 8080, () => {
-  console.log(`Server is running on port ${process.env.PORT || 8080}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
